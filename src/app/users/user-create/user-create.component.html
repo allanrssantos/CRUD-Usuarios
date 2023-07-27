@@ -1,0 +1,114 @@
+<nav class="navbar bg-primary" >
+  <div class="container-fluid justify-content-end">
+    <div class="d-flex">
+      <a routerLink="/user-list" class="btn btn-outline-light">Voltar</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container d-flex justify-content-center" style="height: 100vh;">
+  <div class="col-md-6">
+    <h1 class="text-center">Criar usuário</h1>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label for="title">Titulo</label>
+        <select id="title" class="form-control" formControlName="title">
+          <option value="">Selecione...</option>
+          <option value="mr">Mr</option>
+          <option value="ms">Ms</option>
+          <option value="mrs">Mrs</option>
+          <option value="miss">Miss</option>
+          <option value="dr">Dr</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="firstName">Nome</label>
+        <input type="text" id="firstName" class="form-control" formControlName="firstName" maxlength="50">
+        <div *ngIf="form.controls['firstName'].invalid && (form.controls['firstName'].dirty || form.controls['firstName'].touched)" class="alert alert-danger mt-2">
+          O nome deve ter entre 2 e 50 caracteres.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Sobrenome</label>
+        <input type="text" id="lastName" class="form-control" formControlName="lastName" maxlength="50">
+        <div *ngIf="form.controls['lastName'].invalid && (form.controls['lastName'].dirty || form.controls['lastName'].touched)" class="alert alert-danger mt-2">
+          O sobrenome deve ter entre 2 e 50 caracteres.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" class="form-control" formControlName="email" maxlength="150">
+        <div *ngIf="form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)" class="alert alert-danger mt-2">
+          Formato de e-mail inválido.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="dateOfBirth">Data de Nascimento</label>
+        <input type="date" id="dateOfBirth" class="form-control" formControlName="dateOfBirth">
+      </div>
+
+      <div class="form-group">
+        <label>Gênero</label>
+        <div class="d-flex flex-row gap-2">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="gender" id="male" value="male" formControlName="gender">
+            <label class="form-check-label" for="male">Masculino</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="gender" id="female" value="female" formControlName="gender">
+            <label class="form-check-label" for="female">Feminino</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="gender" id="other" value="other" formControlName="gender">
+            <label class="form-check-label" for="other">Outros</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Telefone</label>
+        <input type="text" id="phone" class="form-control" formControlName="phone">
+      </div>
+
+      <div class="form-group">
+        <label for="picture">Foto URL</label>
+        <input type="text" id="picture" class="form-control" formControlName="picture">
+      </div>
+
+      <div formGroupName="location">
+        <div class="form-group">
+          <label for="street">Logradouro</label>
+          <input type="text" id="street" class="form-control" formControlName="street" maxlength="100">
+        </div>
+
+        <div class="form-group">
+          <label for="city">Cidade</label>
+          <input type="text" id="city" class="form-control" formControlName="city" maxlength="30">
+        </div>
+
+        <div class="form-group">
+          <label for="state">Estado</label>
+          <input type="text" id="state" class="form-control" formControlName="state" maxlength="30">
+        </div>
+
+        <div class="form-group">
+          <label for="country">País</label>
+          <input type="text" id="country" class="form-control" formControlName="country" maxlength="30">
+        </div>
+
+        <div class="form-group">
+          <label for="timezone">Timezone</label>
+          <input type="text" id="timezone" class="form-control" formControlName="timezone" placeholder="Ex.: +3:00">
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100 mt-2" [disabled]="form.invalid">Criar usuário</button>
+    </form>
+  </div>
+</div>

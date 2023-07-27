@@ -1,0 +1,26 @@
+<nav class="navbar bg-primary" >
+  <div class="container-fluid justify-content-end">
+    <div class="d-flex">
+      <a routerLink="/user-list" class="btn btn-outline-light">Voltar</a>
+    </div>
+  </div>
+</nav>
+
+<div class="d-flex justify-content-center align-items-center" style="height: 100vh;" *ngIf="user">
+  <div class="card mx-auto w-50">
+    <div class="card-header text-center">
+      <h2>{{ user.title }}. {{ user.firstName }} {{ user.lastName }}</h2>
+    </div>
+    <img class="card-img-top" [src]="user.picture" alt="User image" style="width: 25%; height: auto; display: block; margin-left: auto; margin-right: auto;">
+    <div class="card-body">
+      <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
+      <p class="card-text"><strong>Telefone:</strong> {{ user.phone }}</p>
+      <p class="card-text"><strong>Genero:</strong> {{ user.gender }}</p>
+      <p class="card-text"><strong>Aniversário:</strong> {{ user.dateOfBirth | date:'dd/MM/yyyy' }}</p>
+      <p class="card-text"><strong>Idade:</strong> {{ age }} anos</p>
+      <p class="card-text"><strong>Endereço:</strong> {{ user.location?.street }}, {{ user.location?.city }}, {{ user.location?.state }}, {{ user.location?.country }}, {{ user.location?.timezone }}</p>
+      <p class="card-text"><strong>Data de cadastro:</strong> {{ user.registerDate | date:'dd/MM/yyyy' }}</p>
+      <button class="btn btn-secondary" style="width: 98vh;" routerLink="/user-list">Voltar</button>
+    </div>
+  </div>
+</div>

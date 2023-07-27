@@ -1,0 +1,25 @@
+<nav class="navbar bg-primary" >
+  <div class="container-fluid justify-content-end">
+    <div class="d-flex">
+      <a routerLink="/user-create" class="btn btn-outline-light">Criar Usuário</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-3 mb-4" *ngFor="let user of users">
+      <div class="card">
+        <img [src]="user.picture" class="card-img-top" alt="User image">
+        <div class="card-body">
+          <h5 class="card-title">{{user.title}}. {{user.firstName}} {{user.lastName}}</h5>
+          <div class="d-flex justify-content-center mt-4">
+            <a routerLink="/user-detail/{{user.id}}" class="btn btn-primary btn-sm mr-2 mb-2">Detalhes</a>
+            <a routerLink="/user-update/{{user.id}}" class="btn btn-primary btn-sm mx-2 mb-2">Atualizar</a>
+            <button (click)="deleteUser(user.id)" class="btn btn-danger btn-sm ml-2 mb-2">Excluir</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
